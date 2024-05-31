@@ -14,7 +14,10 @@
     />
 
     <link rel="icon" href="../static/img/icons/favicon.png" />
-    <link rel="apple-touch-icon" href="../static/img/icons/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      href="../static/img/icons/apple-touch-icon.png"
+    />
     <link rel="manifest" href="manifest.webmanifest" />
 
     <link rel="stylesheet" href="../static/css/general.css" />
@@ -32,7 +35,7 @@
 
     <script defer src="../static/js/script.js"></script>
 
-    <title>Leonardo A. Pinheiro</title>
+    <title>{{ data["personal_info"]["name"] }}</title>
   </head>
 
   <body>
@@ -80,16 +83,7 @@
           <div class="profile-description-box expand-2-col">
             <h3 class="heading-profile txt-ct">About me</h3>
             <p class="about-me-description">
-              I'm a dedicated front-end developer with a strong emphasis on
-              Angular. With a passion for crafting intuitive and visually
-              appealing web applications, I thrive on creating seamless user
-              experiences that bridge the gap between design and functionality.
-              My journey in web development has led me to specialize in Angular,
-              where I've honed my skills and expertise to build dynamic,
-              responsive, and high-performance interfaces. I'm constantly
-              staying up-to-date with the latest web technologies and best
-              practices to ensure I deliver top-notch solutions. Let's connect
-              and discuss how I can contribute to your next project.
+              {{ data["personal_info"]["about_me"] }}
             </p>
           </div>
 
@@ -98,7 +92,9 @@
             <ul class="profile-list">
               <li class="profile-list-item">
                 <span class="item-title">Name:</span>
-                <span class="item-description">Leonardo A. Pinheiro</span>
+                <span class="item-description"
+                  >{{ data["personal_info"]["name"] }}</span
+                >
               </li>
               <li class="profile-list-item">
                 <span class="item-title">Age:</span>
@@ -106,7 +102,9 @@
               </li>
               <li class="profile-list-item">
                 <span class="item-title">Location:</span>
-                <span class="item-description">São Paulo, Brazil</span>
+                <span class="item-description"
+                  >{{ data["personal_info"]["address"] }}</span
+                >
               </li>
             </ul>
           </div>
@@ -119,102 +117,26 @@
         </div>
 
         <div class="container">
-          <!-- ----------- EDUCATION ----------- -->
           <div class="experience">
-            <h3 class="heading-experience">Education</h3>
-            <div class="experience-company">
-              <span class="experience-title">Unibta</span>
-              <p class="experience-text">Jan 2014 - Dez 2018</p>
-            </div>
-            <div class="experience-description">
-              <span class="experience-title"
-                >Bachelor - Computer Engineering</span
-              >
-              <p class="experience-text">
-                This degree showed me principles from Computer Science and
-                Electrical Engineering to create hardware (physical components)
-                and firmware which are used in a wide range of areas.
-              </p>
-              <div class="experience-address">
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="location-outline"
-                  ></ion-icon>
-                  <p>São Paulo, Brazil</p>
-                </div>
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="link-outline"
-                  ></ion-icon>
-                  <a
-                    class="experience-address-link"
-                    href="https://unibta.edu.br/"
-                    target="_blank"
-                    >unibta.edu.br</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="experience-company">
-              <span class="experience-title">Senai</span>
-              <p class="experience-text">Jan 2011 - Dez 2012</p>
-            </div>
-            <div class="experience-description">
-              <span class="experience-title">Course - Eletronics</span>
-              <p class="experience-text">
-                This course professionally qualified myself in the development,
-                installation and maintenance of electronic systems, according to
-                technical, environmental, quality, health and safety procedures
-                and standards at work.
-              </p>
-              <div class="experience-address">
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="location-outline"
-                  ></ion-icon>'
-                  <p>São Paulo, Brazil</p>
-                </div>
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="link-outline"
-                  ></ion-icon>
-                  <a
-                    class="experience-address-link"
-                    href="https://www.sp.senai.br/"
-                    target="_blank"
-                    >sp.senai.br</a
-                  >
-                </div>
-              </div>
-            </div>
-
             <!-- ----------- CAREER ----------- -->
             <h3 class="heading-experience">Career</h3>
+            {% for experience in data["professional_info"]["experience"] %}
             <div class="experience-company">
-              <span class="experience-title">Beyond Soluções</span>
-              <p class="experience-text">Sep 2021 - current</p>
+              <span class="experience-title">{{experience["company"]}}</span>
+              <p class="experience-text">
+                {{experience["start_date"]}} - {{experience["end_date"]}}
+              </p>
             </div>
             <div class="experience-description">
-              <span class="experience-title"
-                >Full-time &mdash; Front End Developer</span
-              >
-              <p class="experience-text">
-                Working as Angular Developer in BTG Pactual, a stockbroker
-                company. I'm responsible for application development, test, and
-                production deployment using Angular 2+ and AngularJS.
-              </p>
+              <span class="experience-title"> {{experience["title"]}} </span>
+              <p class="experience-text">{{experience["responsibilities"]}}</p>
               <div class="experience-address">
                 <div class="address">
                   <ion-icon
                     class="experience-icon"
                     name="location-outline"
                   ></ion-icon>
-                  <p>São Paulo, Brazil</p>
+                  <p>{{experience["location"]}}</p>
                 </div>
                 <div class="address">
                   <ion-icon
@@ -223,34 +145,34 @@
                   ></ion-icon>
                   <a
                     class="experience-address-link"
-                    href="https://www.imaginebeyond.com.br/"
+                    href="{{ url_for('redirect_link', link=experience['site']) }}"
                     target="_blank"
-                    >imaginebeyond.com.br</a
+                    >{{experience["site"]}}</a
                   >
                 </div>
               </div>
             </div>
+            {% endfor %}
 
+            <!-- ----------- EDUCATION ----------- -->
+            <h3 class="heading-experience">Education</h3>
+            {% for education in data["education"] %}
             <div class="experience-company">
-              <span class="experience-title">Santander</span>
-              <p class="experience-text">Sep 2020 - Aug 2021</p>
+              <span class="experience-title">{{education["institution"]}}</span>
+              <p class="experience-text">
+                {{education["start_date"]}} - {{education["end_date"]}}
+              </p>
             </div>
             <div class="experience-description">
-              <span class="experience-title"
-                >Full-time &mdash; Front End Developer</span
-              >
-              <p class="experience-text">
-                Working as Angular Developer in Santander, a bank company. I'm
-                responsible for application development, test, and production
-                deployment using Angular 2+.
-              </p>
+              <span class="experience-title">{{education["degree"]}}</span>
+              <p class="experience-text">{{education["description"]}}</p>
               <div class="experience-address">
                 <div class="address">
                   <ion-icon
                     class="experience-icon"
                     name="location-outline"
                   ></ion-icon>
-                  <p>São Paulo, Brazil</p>
+                  <p>{{education["location"]}}</p>
                 </div>
                 <div class="address">
                   <ion-icon
@@ -259,121 +181,14 @@
                   ></ion-icon>
                   <a
                     class="experience-address-link"
-                    href="https://www.santander.com.br/"
+                    href="{{ url_for('redirect_link', link=education['site']) }}"
                     target="_blank"
-                    >santander.com.br</a
+                    >{{education["site"]}}</a
                   >
                 </div>
               </div>
             </div>
-
-            <div class="experience-company">
-              <span class="experience-title">GFT Group</span>
-              <p class="experience-text">Aug 2019 - Sep 2020</p>
-            </div>
-            <div class="experience-description">
-              <span class="experience-title"
-                >Full-time &mdash; Front End Developer</span
-              >
-              <p class="experience-text">
-                Working as Angular Developer in Santander, a bank company. I'm
-                responsible for application development, test, and production
-                deployment using Angular 2+.
-              </p>
-              <div class="experience-address">
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="location-outline"
-                  ></ion-icon>
-                  <p>São Paulo, Brazil</p>
-                </div>
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="link-outline"
-                  ></ion-icon>
-                  <a
-                    class="experience-address-link"
-                    href="https://www.gft.com/"
-                    target="_blank"
-                    >gft.com</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="experience-company">
-              <span class="experience-title">Wipro Limited</span>
-              <p class="experience-text">Sep 2018 - Aug 2019</p>
-            </div>
-            <div class="experience-description">
-              <span class="experience-title"
-                >Full-time &mdash; Full Stack Developer</span
-              >
-              <p class="experience-text">
-                Working as Full Stack Developer in Bradesco, a bank company. I'm
-                responsible for application development, test, and production
-                deployment using Cobol and Java.
-              </p>
-              <div class="experience-address">
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="location-outline"
-                  ></ion-icon>
-                  <p>São Paulo, Brazil</p>
-                </div>
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="link-outline"
-                  ></ion-icon>
-                  <a
-                    class="experience-address-link"
-                    href="https://www.wipro.com/"
-                    target="_blank"
-                    >wipro.com</a
-                  >
-                </div>
-              </div>
-            </div>
-
-            <div class="experience-company">
-              <span class="experience-title">Foursys</span>
-              <p class="experience-text">Aug 2017 - Aug 2018</p>
-            </div>
-            <div class="experience-description">
-              <span class="experience-title"
-                >Full-time &mdash; Back End Developer</span
-              >
-              <p class="experience-text">
-                Working as Back End Developer in Bradesco, a bank company. I'm
-                responsible for application development, test, and production
-                deployment using Cobol and DB2.
-              </p>
-              <div class="experience-address">
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="location-outline"
-                  ></ion-icon>
-                  <p>São Paulo, Brazil</p>
-                </div>
-                <div class="address">
-                  <ion-icon
-                    class="experience-icon"
-                    name="link-outline"
-                  ></ion-icon>
-                  <a
-                    class="experience-address-link"
-                    href="https://www.foursys.com.br/"
-                    target="_blank"
-                    >foursys.com.br</a
-                  >
-                </div>
-              </div>
-            </div>
+            {% endfor %}
           </div>
         </div>
       </section>

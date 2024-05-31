@@ -1,7 +1,11 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect
 import datetime as dt
+import requests
 
 app = Flask(__name__)
+
+data = requests.get("https://api.npoint.io/39ebecd77af2a70456be").json()
+print(data["personal_info"])
 
 
 def get_actual_age():
@@ -12,8 +16,13 @@ def get_actual_age():
 
 
 @app.route("/")
-def hello_world():
-    return render_template("guess.html", age=get_actual_age())
+def home():
+    return render_template("index.html", age=get_actual_age(), data=data)
+
+
+@app.route('/redirect/<link>')
+def redirect_link(link):
+    return redirect("http://" + link)
 
 
 if __name__ == "__main__":
