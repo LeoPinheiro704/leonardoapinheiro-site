@@ -54,6 +54,10 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  background-color: #fefefe;
+  background-image:  radial-gradient(#1971c2 1px, transparent 1px), radial-gradient(#1971c2 1px, #fefefe 1px);
+  background-size: 40px 40px;
+  background-position: 0 0,20px 20px;
 }
 
 body {

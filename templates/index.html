@@ -62,7 +62,7 @@
         <div class="hero">
           <div class="hero-text-box">
             <h1 class="hero-name">Hi, I'm Leonardo</h1>
-            <p class="hero-profession">Front End Developer</p>
+            <p class="hero-profession">Software Developer</p>
           </div>
           <div class="profile-img-box">
             <img
@@ -196,191 +196,86 @@
       <section class="section-abilitie" id="abilitie">
         <div class="container">
           <div class="abilitie">
-            <h2 class="heading-abilitie">Abilities</h2>
+            <h2 class="heading-abilitie">Skills</h2>
             <div class="abilitie-box">
-              <h3 class="heading-abilitie--box">Skills</h3>
-              <ul class="abilitie-list">
-                <li>
-                  <span>HTML5</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>CSS3</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Javascript</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Typescript</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>SASS / SCSS</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-              </ul>
-
-              <ul class="abilitie-list">
-                <li>
-                  <span>BEM</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Angular 2+</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>AngularJS</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Java</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Cobol</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-              </ul>
+              <h3 class="heading-abilitie--box">Programming Languages</h3>
+              {% for skill in data["skills"]["programming_languages"] %}
+              <div class="abilitie-list-v2">
+                <span>{{ skill["technology"] }}</span>
+                <div class="abilitie-level">
+                  {% for _ in range(skill["level"]) %}
+                  <ion-icon name="star"></ion-icon>
+                  {% endfor %}
+                  {% for _ in range(5 - skill["level"]) %}
+                  <ion-icon name="star-outline"></ion-icon>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="abilitie-box">
+              <h3 class="heading-abilitie--box">Frameworks and Libraries</h3>
+              {% for skill in data["skills"]["frameworks_and_libraries"] %}
+              <div class="abilitie-list-v2">
+                <span>{{ skill["technology"] }}</span>
+                <div class="abilitie-level">
+                  {% for _ in range(skill["level"]) %}
+                  <ion-icon name="star"></ion-icon>
+                  {% endfor %}
+                  {% for _ in range(5 - skill["level"]) %}
+                  <ion-icon name="star-outline"></ion-icon>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="abilitie-box">
+              <h3 class="heading-abilitie--box">Databases</h3>
+              {% for skill in data["skills"]["databases"] %}
+              <div class="abilitie-list-v2">
+                <span>{{ skill["technology"] }}</span>
+                <div class="abilitie-level">
+                  {% for _ in range(skill["level"]) %}
+                  <ion-icon name="star"></ion-icon>
+                  {% endfor %}
+                  {% for _ in range(5 - skill["level"]) %}
+                  <ion-icon name="star-outline"></ion-icon>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+            <div class="abilitie-box">
+              <h3 class="heading-abilitie--box">Tools and Platforms</h3>
+              {% for skill in data["skills"]["tools_and_platforms"] %}
+              <div class="abilitie-list-v2">
+                <span>{{ skill["technology"] }}</span>
+                <div class="abilitie-level">
+                  {% for _ in range(skill["level"]) %}
+                  <ion-icon name="star"></ion-icon>
+                  {% endfor %}
+                  {% for _ in range(5 - skill["level"]) %}
+                  <ion-icon name="star-outline"></ion-icon>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
             </div>
             <div class="abilitie-box">
               <h3 class="heading-abilitie--box">Languages</h3>
-              <ul class="abilitie-list">
-                <li>
-                  <span>Portuguese (Mother tungue)</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </li>
-              </ul>
-
-              <ul class="abilitie-list">
-                <li>
-                  <span>English (Daily use)</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            <div class="abilitie-box">
-              <h3 class="heading-abilitie--box">Tools</h3>
-              <ul class="abilitie-list">
-                <li>
-                  <span>Git / Git Flow</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Figma</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                    <ion-icon name="star-outline"></ion-icon>
-                  </div>
-                </li>
-              </ul>
-
-              <ul class="abilitie-list">
-                <li>
-                  <span>MS Office</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </li>
-                <li>
-                  <span>Windows</span>
-                  <div class="abilitie-level">
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                    <ion-icon name="star"></ion-icon>
-                  </div>
-                </li>
-              </ul>
+              {% for skill in data["skills"]["languages"] %}
+              <div class="abilitie-list-v2">
+                <span>{{ skill["technology"] }}</span>
+                <div class="abilitie-level">
+                  {% for _ in range(skill["level"]) %}
+                  <ion-icon name="star"></ion-icon>
+                  {% endfor %}
+                  {% for _ in range(5 - skill["level"]) %}
+                  <ion-icon name="star-outline"></ion-icon>
+                  {% endfor %}
+                </div>
+              </div>
+              {% endfor %}
             </div>
           </div>
         </div>

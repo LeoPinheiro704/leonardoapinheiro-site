@@ -176,6 +176,7 @@
   border-radius: 11px;
   overflow: hidden;
   transition: all 0.4s;
+  background-color: white;
 }
 
 .profile-description-box:hover {
@@ -244,6 +245,7 @@
   box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
   border-radius: 11px;
   font-size: 2rem;
+  background-color: white;
 }
 
 .experience-title {
@@ -332,6 +334,23 @@
   grid-column: 1 / -1;
 }
 
+.abilitie-list-v2 {
+  font-size: 1.8rem;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.2rem;
+}
+
+.abilitie-list-v2:hover {
+  border-radius: 9px;
+  background-color: #4dabf7;
+}
+
+.abilitie-list-v2:hover .abilitie-level {
+  gap: 0.8rem;
+}
+
 .abilitie-list {
   list-style: none;
   font-size: 1.8rem;
@@ -377,6 +396,7 @@
 .footer {
   background-color: #e9ecef;
   padding: 4.8rem 0 4.8rem 0;
+  opacity: 1;
 }
 
 .footer .heading-secondary {
