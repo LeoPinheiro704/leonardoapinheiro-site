@@ -1,10 +1,11 @@
-from flask import Flask, render_template, redirect, json
+from flask import Flask, render_template, redirect
 import datetime as dt
+import requests
 
 app = Flask(__name__)
 
-with open("static/data.json", mode="r") as data_file:
-    data = json.load(data_file)
+
+data = requests.get("https://api.npoint.io/39ebecd77af2a70456be").json()
 
 
 def get_actual_age():
